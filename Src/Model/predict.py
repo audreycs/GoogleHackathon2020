@@ -5,12 +5,12 @@ import tensorflow as tf
 from xmlrpc.server import SimpleXMLRPCServer
 
 
-kg = KnowledgeGraph(data_dir='../data/')
+kg = KnowledgeGraph(data_dir='../../Data/TrainingData/')
 ent_dic = kg.entity_dict
 rel_dic = kg.relation_dict
 model = TransE(kg=kg, score_func='L1')
 type_dic = dict()
-with open('../data/type.txt', 'r', encoding='utf-8') as f:
+with open('../../Data/TrainingData/type.txt', 'r', encoding='utf-8') as f:
     for i in f.readlines():
         s = i.strip().split('\t')
         type_dic[s[0]] = s[1]
