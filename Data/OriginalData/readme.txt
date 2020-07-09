@@ -1,0 +1,1 @@
+Download the original .json file from http://openkg1.oss-cn-beijing.aliyuncs.com/799a854f-18ab-4dd5-ba98-365bf3fe78d4/virusnetwork.taxonomy2.27.zip
