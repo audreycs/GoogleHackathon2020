@@ -11,7 +11,7 @@ os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 
 def main():
     parser = argparse.ArgumentParser(description='TransE')
-    parser.add_argument('--data_dir', type=str, default='../data/')
+    parser.add_argument('--data_dir', type=str, default='../../Data/TrainingData/')
     parser.add_argument('--embedding_dim', type=int, default=50)
     parser.add_argument('--margin_value', type=float, default=1.0)
     parser.add_argument('--score_func', type=str, default='L1')
@@ -40,8 +40,8 @@ def main():
             print('=' * 30 + '[EPOCH {}]'.format(epoch+1) + '=' * 30)
             kge_model.launch_training(session=sess, summary_writer=summary_writer)
         # kge_model.launch_evaluation(session=sess)
-        np.save('../res/ent_embeddings', kge_model.entity_embedding.eval(session=sess))
-        np.save('../res/rel_embeddings', kge_model.relation_embedding.eval(session=sess))
+        np.save('../../Data/Embeddings/ent_embeddings', kge_model.entity_embedding.eval(session=sess))
+        np.save('../../Data/Embeddings/rel_embeddings', kge_model.relation_embedding.eval(session=sess))
 
 
 if __name__ == '__main__':
