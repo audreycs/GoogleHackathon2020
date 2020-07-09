@@ -1,5 +1,0 @@
-produce	0
-binding	1
-belong_to	2
-interaction	3
-effect	4
