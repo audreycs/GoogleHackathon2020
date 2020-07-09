@@ -6,7 +6,7 @@ import tensorflow as tf
 import argparse
 import os
 
-os.environ["CUDA_VISIBLE_DEVICES"] = "2"
+os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 
 
 def main():
@@ -39,8 +39,7 @@ def main():
         for epoch in range(args.max_epoch):
             print('=' * 30 + '[EPOCH {}]'.format(epoch+1) + '=' * 30)
             kge_model.launch_training(session=sess, summary_writer=summary_writer)
-            # if (epoch + 1) % args.eval_freq == 0:
-            #     kge_model.launch_evaluation(session=sess)
+        # kge_model.launch_evaluation(session=sess)
         np.save('../res/ent_embeddings', kge_model.entity_embedding.eval(session=sess))
         np.save('../res/rel_embeddings', kge_model.relation_embedding.eval(session=sess))
 

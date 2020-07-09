@@ -26,10 +26,16 @@ def predict_drug(t):
     with sess.as_default():
         for i in top_k_id.eval():
             top_k.append(new_ent_dic.get(i))
+    print()
     result = list()
+    count = 0
     for name in top_k:
-        if type_dic.get(name) == 'Drug':
-            result.append(name)
+        if count < 5:
+            if type_dic.get(name) == 'Drug':
+                result.append(name)
+                count += 1
+        else:
+            break
     return result
 
 
@@ -68,22 +74,18 @@ def predict_binding_protein(h):
 
 
 if __name__ == '__main__':
-    kg = KnowledgeGraph(data_dir='../data/')
-    kge_model = TransE(kg=kg, score_func='L1')
-    type_dic = dict()
-    with open('../data/type.txt', 'r', encoding='utf-8') as f:
-        for i in f.readlines():
-            s = i.strip().split('\t')
-            type_dic[s[0]] = s[1]
 
-    # server = SimpleXMLRPCServer('localhost',8888)
-    # server.register_function(predict_drug,"predictHead")
-    # server.register_function(predict_interaction_protein,"predictTail")
+    # server = SimpleXMLRPCServer(('114.212.85.127', 8888))
+    # server.register_function(predict_drug, "predictDrug")
+    # server.register_function(predict_binding_protein, "predictBindingProtein")
+    # server.register_function(predict_interaction_protein, "predictInteractionProtein")
     # print("Listening...")
     # server.serve_forever()
-    result = predict_drug('Human_adenovirus_1')
+
+    result = predict_drug('Human_adenovirus_28')
     print(result)
     result = predict_interaction_protein('TOR1A')
     print(result)
     result = predict_binding_protein('PB2')
     print(result)
+
