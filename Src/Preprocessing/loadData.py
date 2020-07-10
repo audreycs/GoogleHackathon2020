@@ -1,7 +1,7 @@
 import json
 import csv
 if __name__ == '__main__':
-    with open('data/virusnetwokr.drug2.27.json','r',encoding='utf-8') as f:
+    with open('../../Data/OriginalData/virusnetwokr.drug2.27.json','r',encoding='utf-8') as f:
         triples=[]
         data = json.load(f)
         key2ids = data["@context"]
